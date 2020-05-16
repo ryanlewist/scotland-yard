@@ -1,20 +1,18 @@
+import game
+import mrx
+import agent
 
-require 'game'
-require 'mrx'
-require 'agent'
 
-class Controller
+class Controller:
 
-  def run
-    game = Game.new
-    players = [MrXPlayer.new, AgentPlayer.new, AgentPlayer.new, AgentPlayer.new, AgentPlayer.new]
-    while true
-      players.each_with_index do |p, i|
-        route = p.play(game.gamestate(i))
-        game.move(i, route[:station], route[:ticket]) unless route.nil?
-      end
-      break if game.over?
-    end
-  end
-  
-end
+    def run(self):
+        game = game.Game()
+        players = [mrx.MrXPlayer(), agent.AgentPlayer(), agent.AgentPlayer(), agent.AgentPlayer(), agent.AgentPlayer()]
+        while True:
+            for i, p in enumerate(players):
+                route = p.play(game.gamestate(i))
+                game.move(i, route['station'], route['ticket'])
+                if not route:
+                    break
+            if game.is_over:
+                break
