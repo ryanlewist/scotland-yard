@@ -35,7 +35,7 @@ class Game:
     # - Mr. X and an agent are at the same station (=> The agents win)
     # - 20 turns have passed (=> Mr. X has won)
     def is_over(self):
-        for i in range(0, 5):
+        for i in range(1, 5):
             if self.figures[0].position == self.figures[i].position:
                 self.logger.log("**GAME OVER:** Mr. X was caught - The agents win.")
                 self.logger.save()
