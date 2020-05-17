@@ -11,8 +11,7 @@ class Controller:
         while True:
             for i, p in enumerate(players):
                 route = p.play(game.gamestate(i))
-                game.move(i, route['station'], route['ticket'])
-                if not route:
-                    break
-            if game.is_over:
+                if route:
+                    game.move(i, route['station'], route['ticket'])
+            if game.is_over():
                 break
