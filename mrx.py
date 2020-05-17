@@ -20,9 +20,8 @@ class MrXPlayer:
             for position_of_agent in positions_of_agents:
                 current_distance_to_agent = board.distance(my_position, position_of_agent)
                 sum_of_distances_to_agents += current_distance_to_agent
-            current_average_distance_to_agents = sum_of_distances_to_agents / 4 # TODO: This 4 should be replaced by no. of agents variable
+            current_average_distance_to_agents = sum_of_distances_to_agents / 4
             if current_average_distance_to_agents > max_average_distance_to_agents:
                 max_average_distance_to_agents = current_average_distance_to_agents
                 route_to_go_to = index
         return routes[route_to_go_to]
-
