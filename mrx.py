@@ -8,7 +8,7 @@ class MrXPlayer:
 
     # Play to a random station
     def play_random(self, routes):
-        return random.sample(routes,1)
+        return random.sample(routes,1)[0]
 
     # Play to the station with the maximal average distance to all agents using a greedy algorithm
     def play_greedy(self, routes, positions_of_agents, board):

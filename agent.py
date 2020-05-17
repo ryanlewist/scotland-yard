@@ -14,7 +14,7 @@ class AgentPlayer:
 
     # Play to a random station
     def play_random(self, routes):
-        return random.sample(routes, 1)
+        return random.sample(routes, 1)[0]
 
     def play_greedy(self, routes, board):
         if not routes:
