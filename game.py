@@ -76,7 +76,7 @@ class Game:
         #  to the same space as  another agent, but I'm not sure why it only applies to the agents
         #  and not Mr. X,  who also can't move into the same space as an agent.
         if figure.id > 0:
-            routes[:] = [r for r in routes if self.positions_of_agents != r['station']]
+            routes[:] = [r for r in routes if self.positions_of_agents() != r['station']]
         return routes
 
     # Moves the figure with figure_id to [station] by [ticket].
@@ -105,10 +105,10 @@ class Game:
             'figure_id': figure_id,
             'routes': self.possible_routes_for(self.figures[figure_id]),
             'board': self.board,
-            'position_of_mrx': self.position_of_mrx,
-            'positions_of_agents': self.positions_of_agents,
+            'position_of_mrx': self.position_of_mrx(),
+            'positions_of_agents': self.positions_of_agents(),
             'turns': self.turns,
-            'tickets': self.tickets,
+            'tickets': self.tickets(),
             'mrx_last_used_ticket': self.mrx_last_used_ticket
         }
         return state
