@@ -3,8 +3,7 @@ import random
 
 class AgentPlayer:
 
-    def __init__(self):
-        self.possible_positions_mrx = []
+    possible_positions_mrx = []
 
     # play gets called by the controller once per turn
     def play(self, gamestate):
