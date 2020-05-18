@@ -37,11 +37,12 @@ class AgentPlayer:
 
     def calculate_possible_positions_mrx(self, position_of_mrx, mrx_last_used_ticket, board):
         if position_of_mrx == 0:
-            new_positions = []
-            for p in self.possible_positions_mrx:
-                for q in board.routes_from(p):
-                    if q['ticket'] == mrx_last_used_ticket and not q['station'] in new_positions:
-                        new_positions.append(q['station'])
-            self.possible_positions_mrx = new_positions.sort()
+            if self.possible_positions_mrx:
+                new_positions = []
+                for p in self.possible_positions_mrx:
+                    for q in board.routes_from(p):
+                        if q['ticket'] == mrx_last_used_ticket and not q['station'] in new_positions:
+                            new_positions.append(q['station'])
+                self.possible_positions_mrx = new_positions.sort()
         else:
             self.possible_positions_mrx = [position_of_mrx]
