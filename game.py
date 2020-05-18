@@ -51,7 +51,7 @@ class Game:
     # Returns the position of Mr. X at the 3, 8, 13, and 18 turns.
     def position_of_mrx(self):
         if self.turns % 5 == 3:
-            return self.figures[0].position()
+            return self.figures[0].position
         else:
             return 0
 
