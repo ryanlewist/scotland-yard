@@ -1,5 +1,5 @@
 
-import controller
+from controller import *
 
 controller = Controller()
 controller.run()
