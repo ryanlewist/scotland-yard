@@ -19,17 +19,17 @@ class AgentPlayer:
     def play_greedy(self, routes, board):
         if not routes:
             return None
-        if not self.possible_positions_mrx:
+        if not AgentPlayer.possible_positions_mrx:
             return self.play_random(routes)
         min_average_distance_to_mrx = 10
         route_to_go_to = 0
         for index, route in enumerate(routes):
             my_position = route['station']
             sum_of_distances_to_mrx = 0
-            for position_of_mrx in self.possible_positions_mrx:
+            for position_of_mrx in AgentPlayer.possible_positions_mrx:
                 current_distance_to_mrx = board.distance(my_position, position_of_mrx)
                 sum_of_distances_to_mrx += current_distance_to_mrx
-            current_avgerage_distance_to_mrx = sum_of_distances_to_mrx / len(self.possible_positions_mrx)
+            current_avgerage_distance_to_mrx = sum_of_distances_to_mrx / len(AgentPlayer.possible_positions_mrx)
             if current_avgerage_distance_to_mrx < min_average_distance_to_mrx:
                 min_average_distance_to_mrx = current_avgerage_distance_to_mrx
                 route_to_go_to = index
@@ -37,12 +37,12 @@ class AgentPlayer:
 
     def calculate_possible_positions_mrx(self, position_of_mrx, mrx_last_used_ticket, board):
         if position_of_mrx == 0:
-            if self.possible_positions_mrx:
+            if AgentPlayer.possible_positions_mrx:
                 new_positions = []
-                for p in self.possible_positions_mrx:
+                for p in AgentPlayer.possible_positions_mrx:
                     for q in board.routes_from(p):
                         if q['ticket'] == mrx_last_used_ticket and not q['station'] in new_positions:
                             new_positions.append(q['station'])
-                self.possible_positions_mrx = new_positions.sort()
+                AgentPlayer.possible_positions_mrx = new_positions.sort()
         else:
-            self.possible_positions_mrx = [position_of_mrx]
+            AgentPlayer.possible_positions_mrx = [position_of_mrx]
