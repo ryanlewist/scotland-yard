@@ -43,6 +43,7 @@ class AgentPlayer:
                     for q in board.routes_from(p):
                         if q['ticket'] == mrx_last_used_ticket and not q['station'] in new_positions:
                             new_positions.append(q['station'])
-                AgentPlayer.possible_positions_mrx = new_positions.sort()
+                new_positions.sort()
+                AgentPlayer.possible_positions_mrx = new_positions
         else:
             AgentPlayer.possible_positions_mrx = [position_of_mrx]
