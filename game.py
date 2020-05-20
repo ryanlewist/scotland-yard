@@ -85,10 +85,9 @@ class Game:
         routes = self.possible_routes_for(figure)
         if {'station': station, 'ticket': ticket} in routes or ticket == 'black':
             if figure.id == 0:
-                self.logger.log("\n### TURN {0}:".format(self.turns + 1))
                 self.turns += 1
+                self.logger.log("\n### TURN {0}:".format(self.turns))
                 self.mrx_last_used_ticket = ticket
-            if figure.id == 0:
                 figure_name = 'Mr. X'
             else:
                 figure_name = 'Agent {0}'.format(figure.id)
