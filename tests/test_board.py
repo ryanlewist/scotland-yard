@@ -6,21 +6,21 @@ import os
 os.chdir('..')
 
 @pytest.fixture
-def sy_board():
+def game_board():
     return board.Board()
 
 
-def test_routes_from_158(sy_board):
+def test_routes_from_158(game_board):
     routes_from_158_list = [
         {'station': 141, 'ticket': 'taxi'},
         {'station': 142, 'ticket': 'taxi'},
         {'station': 157, 'ticket': 'taxi'},
         {'station': 159, 'ticket': 'taxi'}
     ]
-    assert routes_from_158_list == sy_board.routes_from(158)
+    assert routes_from_158_list == game_board.routes_from(158)
 
 
-def test_routes_from_111(sy_board):
+def test_routes_from_111(game_board):
     routes_from_111_list = [
         {'station': 67, 'ticket': 'underground'},
         {'station': 79, 'ticket': 'underground'},
@@ -32,4 +32,4 @@ def test_routes_from_111(sy_board):
         {'station': 153, 'ticket': 'underground'},
         {'station': 163, 'ticket': 'underground'}
     ]
-    assert routes_from_111_list == sy_board.routes_from(111)
+    assert routes_from_111_list == game_board.routes_from(111)
