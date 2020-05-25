@@ -1,9 +1,5 @@
 import pytest
 import game
-import os
-
-# Change working directory to project folder in order to be able to import yml files
-os.chdir('..')
 
 
 @pytest.fixture
@@ -19,6 +15,7 @@ def board_game():
 
 def test_starting_players(board_game):
     assert 5 == len(board_game.figures)
+
 
 @pytest.mark.skip(reason='Test currently failing, although code works independently of test')
 def test_initial_setup(board_game):

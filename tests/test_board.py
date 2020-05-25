@@ -1,9 +1,6 @@
 import pytest
 import board
-import os
 
-# Change working directory to project folder in order to be able to import yml files
-os.chdir('..')
 
 @pytest.fixture
 def game_board():
