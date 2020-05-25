@@ -73,10 +73,13 @@ class Game:
         routes = self.board.routes_from(figure.position)
         routes[:] = [r for r in routes if figure.tickets[r['ticket']] != 0]
         # TODO: Not sure how the following piece works. I think it means that you can't move
-        #  to the same space as  another agent, but I'm not sure why it only applies to the agents
-        #  and not Mr. X,  who also can't move into the same space as an agent.
+        #  to the same space as another agent, but I'm not sure why it only applies to the agents
+        #  and not Mr. X,  who also can't move into the same space as an agent. Maybe it's because agents
+        #  move to the same space as Mr. X, but Mr. X would never try to move to a space with an agent because
+        #  he tries to maximize the distance between them. Per the rules, if he is cornered, the game
+        #  should end and the agents win. That condition should be added to the is_over class.
         if figure.id > 0:
-            routes[:] = [r for r in routes if self.positions_of_agents() != r['station']]
+            routes[:] = [r for r in routes if r['station'] not in self.positions_of_agents()]
         return routes
 
     # Moves the figure with figure_id to [station] by [ticket].
