@@ -5,9 +5,9 @@ import numpy as np
 def normalize_board(board_matrix):
     normal_board = np.zeros([200, 200], dtype=int)
     for outer_index, j in enumerate(board_matrix):
-        for innder_index, v in enumerate(j):
+        for inner_index, v in enumerate(j):
             if v != 0:
-                normal_board[outer_index][innder_index] = 1
+                normal_board[outer_index][inner_index] = 1
     return normal_board
 
 
