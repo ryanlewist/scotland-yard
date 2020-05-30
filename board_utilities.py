@@ -24,10 +24,10 @@ def create_distance_matrix(normalized_board, power=16):
     b = np.zeros([200, 200], dtype=int)
     for n in range(1, power):
         for outer_index, j in enumerate(np.linalg.matrix_power(normalized_board, n)):
-            for innder_index, v in enumerate(j):
-                if (v != 0) and (b[outer_index][innder_index] == 0) and (outer_index != innder_index):
-                    b[outer_index][innder_index] = n
-                    b[innder_index][outer_index] = n
+            for inner_index, v in enumerate(j):
+                if (v != 0) and (b[outer_index][inner_index] == 0) and (outer_index != inner_index):
+                    b[outer_index][inner_index] = n
+                    b[inner_index][outer_index] = n
     b_list = matrix_as_list(b)
     return b_list
 
