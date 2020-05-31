@@ -105,6 +105,7 @@ class Game:
     def gamestate(self, figure_id):
         state = {
             'figure_id': figure_id,
+            'figure_position': self.figures[figure_id].position,
             'routes': self.possible_routes_for(self.figures[figure_id]),
             'board': self.board,
             'position_of_mrx': self.position_of_mrx(),

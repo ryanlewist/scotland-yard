@@ -2,7 +2,6 @@ import random
 
 
 class AgentPlayer:
-
     possible_positions_mrx = []
 
     # play gets called by the controller once per turn
@@ -10,21 +9,19 @@ class AgentPlayer:
         if gamestate['figure_id'] == 1:
             self.calculate_possible_positions_mrx(gamestate['position_of_mrx'], gamestate['mrx_last_used_ticket'],
                                                   gamestate['board'])
-        return self.play_greedy(gamestate['routes'], gamestate['board'])
+        return self.play_greedy(gamestate['routes'], gamestate['board'], gamestate['figure_position'])
 
     # Play to a random station
     def play_random(self, routes):
         return random.sample(routes, 1)[0]
 
-    def play_greedy(self, routes, board):
+    def play_greedy(self, routes, board, my_position):
         if not routes:
             return None
         if not AgentPlayer.possible_positions_mrx:
             return self.play_random(routes)
         min_average_distance_to_mrx = 10
-        route_to_go_to = 0
         for index, route in enumerate(routes):
-            my_position = route['station']
             sum_of_distances_to_mrx = 0
             for position_of_mrx in AgentPlayer.possible_positions_mrx:
                 current_distance_to_mrx = board.distance(my_position, position_of_mrx)
